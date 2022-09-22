@@ -63,9 +63,20 @@ Complete a month cost analysis of each Azure resource to give an estimate total 
 
 | Azure Resource | Service Tier | Monthly Cost |
 | ------------ | ------------ | ------------ |
-| *Azure Postgres Database* |     |              |
-| *Azure Service Bus*   |         |              |
-| ...                   |         |              |
+| *Azure Postgres Database* | Single server    | $59.64 per month             |
+| *Azure Service Bus*   | Basic        | $0.05 per month            |
+| *Azure Function App* | See Azure App Service Plan        |              |
+| *Azure Web App* | See Azure App Service Plan        |              |
+| *Azure App Service Plan* | B1        | $13.140 per month             |
 
 ## Architecture Explanation
-This is a placeholder section where you can provide an explanation and reasoning for your architecture selection for both the Azure Web App and Azure Function.
+The architecture consists of four major parts: a PostgreSQL database, a webapp, a service bus queue, and a service bus trigger function app.
+The database is used for persisting data.
+The webapp is used for displaying and altering data.
+The service bus queue is used for decoupling the updating of data from sending out notification emails.
+It works as follows: 
+* An administrator fills out a web form that contains the message they wish to send to conference participants.
+* This kicks off two things: the database is updated and a message is placed on the queue
+* The service bus trigger function app is constantly listening to the queue.
+When there is a message on the queue, the function app picks it up and sends emails to participants.
+The database is then updated to inform that messages were sent out successfully.
