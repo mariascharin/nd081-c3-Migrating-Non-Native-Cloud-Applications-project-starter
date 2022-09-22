@@ -13,7 +13,7 @@ class BaseConfig:
     CONFERENCE_ID = 1
     SECRET_KEY = 'LWd2tzlprdGHCIPHTd4tp5SBFgDszm'
     SERVICE_BUS_CONNECTION_STRING = 'Endpoint=sb://mariasnamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=6p7+VT7ajcu230gHNDHAaCqH06WYK5IAU9Ucir6YqpM='
-    SERVICE_BUS_QUEUE_NAME ='notificationqueue'
+    SERVICE_BUS_QUEUE_NAME ='mariasqueue'
     ADMIN_EMAIL_ADDRESS: 'info@techconf.com'
     SENDGRID_API_KEY = '' #Configuration not required, required SendGrid Account
 
